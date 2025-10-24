@@ -2,7 +2,15 @@
 Smoke tests for Mergington High School API
 
 This script checks basic API endpoints for expected responses.
+
+# Created by Copilot for issue #13
 """
+def test_health():
+    resp = requests.get(f"{BASE_URL}/health")
+    assert resp.status_code == 200, f"Expected 200, got {resp.status_code}"
+    data = resp.json()
+    assert data.get("status") == "ok", "Health endpoint failed"
+    assert data.get("copilot") is True, "Copilot flag missing"
 import requests
 
 BASE_URL = "http://localhost:8000"
@@ -21,4 +29,5 @@ def test_activities():
 if __name__ == "__main__":
     test_root_redirect()
     test_activities()
+    test_health()
     print("Smoke tests passed.")

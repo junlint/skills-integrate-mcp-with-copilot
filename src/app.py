@@ -3,6 +3,8 @@ High School Management System API
 
 A super simple FastAPI application that allows students to view and sign up
 for extracurricular activities at Mergington High School.
+
+# --- Added by Copilot for issue #13 ---
 """
 
 from fastapi import FastAPI, HTTPException
@@ -13,6 +15,11 @@ from pathlib import Path
 
 app = FastAPI(title="Mergington High School API",
               description="API for viewing and signing up for extracurricular activities")
+
+# Health check endpoint for CI/bot validation
+@app.get("/health")
+def health():
+    return {"status": "ok", "copilot": True}
 
 # Mount the static files directory
 current_dir = Path(__file__).parent
