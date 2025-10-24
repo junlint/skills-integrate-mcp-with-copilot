@@ -16,3 +16,6 @@ down:
 
 test:
 	${PYTHON} -m pytest -q
+
+smoke:
+	${PYTHON} src/smoke_test.py
